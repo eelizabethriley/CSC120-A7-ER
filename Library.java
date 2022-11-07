@@ -27,6 +27,9 @@ public class Library extends Building {
       if (elevator == true) {
         super.goToFloor(floorNum);
       }
+      else {
+        throw new RuntimeException("Cannot go to nonadjacent floor, there is no elevator in " + this.name);
+      }
     }
 
     /**
@@ -115,7 +118,6 @@ public class Library extends Building {
       neilson.printCollection();
       neilson.showOptions();
       neilson.enter();
-      neilson.elevator = false;
       neilson.goToFloor(4);
     }
   
