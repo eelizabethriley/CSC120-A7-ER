@@ -54,6 +54,11 @@ public class House extends Building {
     return residents.contains(person);
   }
 
+  public void showOptions() {
+    super.showOptions();
+    System.out.println(" + moveIn()" + "\n + moveOut()" + "\n + isResident()");
+  }
+  
   public String toString() {
     return this.getName() + " is a " + this.getFloors() + "-story residence in the " + this.getAddress() + " area of campus.";
   }
@@ -64,6 +69,7 @@ public class House extends Building {
     wilson.moveIn("Erin Riley");
     wilson.moveIn("Jenny Yang");
     System.out.println(wilson);
+    wilson.showOptions();
 
   }
 

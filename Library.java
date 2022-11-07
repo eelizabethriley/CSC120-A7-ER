@@ -8,6 +8,7 @@ import java.util.Map;
 public class Library extends Building {
 
     private Hashtable<String, Boolean> collection;
+    private boolean elevator;
 
     /**
      * Constructor for a Library
@@ -18,6 +19,7 @@ public class Library extends Building {
     public Library(String name, String address, int nFloors) {
       super(name, address, nFloors);
       this.collection = new Hashtable<String, Boolean>();
+      elevator = true;
       System.out.println("You have built a library: 📖");
     }
   
@@ -90,6 +92,11 @@ public class Library extends Building {
       }
     }
 
+    public void showOptions() {
+      super.showOptions();
+      System.out.println(" + checkOut()" + "\n + returnBook()" + "\n + containsTitle()" + "\n + isAvailable()" + "\n + printCollection()");
+    }
+
     public static void main(String[] args) {
       Library neilson = new Library("Neilson", "7 Neilson Drive, Northampton MA 01063", 4);
       neilson.addTitle("Pride and Prejudice by Jane Austen");
@@ -100,6 +107,7 @@ public class Library extends Building {
       neilson.checkOut("The House on Mango Street by Sandra Cisneros");
       neilson.returnBook("Pride and Prejudice by Jane Austen");
       neilson.printCollection();
+      neilson.showOptions();
     }
   
   }
