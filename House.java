@@ -37,12 +37,15 @@ public class House extends Building {
   /* Navigation method goToFloor that allows movement to a different floor */
   public void goToFloor(int floorNum) {
     // If the difference between the floorNum passed in and the floor number that the user is currently on is greater than one floor up or down, 
-    // and there is no elevator in this building, then it is not possible to move up or down by more than one flight of stairs.
+    // and there is no elevator in this building, then it is not possible to move up or down by more than one floor at a time.
     if (floorNum - activeFloor > 1 || activeFloor - floorNum >1) {
       if (elevator == false) {
         throw new RuntimeException("Cannot go to nonadjacent floor, there is no elevator in " + this.name);
       }
     }
+    if (floorNum < 1 || floorNum > this.nFloors) {
+      throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+     }
     System.out.println("You are now on floor #" + floorNum + " of " + this.name);
     this.activeFloor = floorNum;
   }
@@ -102,11 +105,11 @@ public class House extends Building {
     wilson.showOptions();
     wilson.enter();
     wilson.goUp();
-    wilson.goToFloor(1);
+    wilson.goToFloor(3);
 
-    House ziskind = new House("Ziskind", "Mountain Neighborhood", 4, true, true);
+    House ziskind = new House("Ziskind", "Mountain Neighborhood", 3, true, true);
     ziskind.enter();
-    ziskind.goToFloor(4);
+    ziskind.goToFloor(3);
 
   }
 
