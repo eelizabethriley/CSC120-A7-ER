@@ -75,6 +75,14 @@ public class Cafe extends Building {
      * @param nSugarPackets the number of sugar packets being added to the Cafe's inventory
      * @param nCreams the amount of cream being added to the Cafe's inventory
      */
+    private void restock() {
+        this.nCoffeeOunces ++;
+        this.nSugarPackets ++;
+        this.nCreams ++;
+        this.nCups ++;
+        System.out.println("Successfully restocked the Cafe.");
+    }
+
     private void restock(int size, int nSugarPackets, int nCreams) {
         this.nCoffeeOunces += size;
         this.nSugarPackets += nSugarPackets;
@@ -86,6 +94,7 @@ public class Cafe extends Building {
     private void restock (int size) {
         this.nCoffeeOunces += size;
         this.nCups ++;
+        System.out.println("Succesfully restocked the Cafe.");
     }
     
     public static void main(String[] args) {
