@@ -43,6 +43,11 @@ public class Cafe extends Building {
         System.out.println(size + " oz coffee with " + nSugarPackets + " sugar(s) and " + nCreams + " cream(s) has been sold. Thank you!");
     }
     
+    public void showOptions() {
+        super.showOptions();
+        System.out.println(" + sellcoffee()");
+    }
+
     /**
      * Increases the stock of the items in the Cafe's inventory.
      * @param size the quantity of coffee, in ounces, being added to the Cafe's inventory
@@ -58,8 +63,9 @@ public class Cafe extends Building {
     }
     
     public static void main(String[] args) {
-        Cafe ccCafe = new Cafe("Campus Center Cafe", "100 Elm St, Northampton, MA 01063", 3, 50, 10, 20, 20);
+        Cafe ccCafe = new Cafe("Campus Center Cafe", "100 Elm St, Northampton, MA 01063", 1, 50, 10, 20, 20);
         ccCafe.sellCoffee(12, 1, 2);
+        ccCafe.showOptions();
     }
     
 }
