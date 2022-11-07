@@ -16,7 +16,7 @@ __YES___ 1 pt: The `House`, `Library`, and `Cafe` classes all `extend` the modif
 
 __YES___ 1 pt: The `House`, `Library`, and `Cafe` classes all override the `showOptions()` method to include their additional interactive methods
 
-_____ 1 pt: The `Library` class has a `goToFloor(...)` method that allows movement between non-adjacent floors
+__YES___ 1 pt: The `Library` class has a `goToFloor(...)` method that allows movement between non-adjacent floors
 
 __YES___ 1 pt: The `House` class has a `goToFloor(...)` method that allows movement between non-adjacent floors only if an elevator is present
 
@@ -24,11 +24,11 @@ __YES___ 1 pt: The `Cafe` class has a `goToFloor(...)` method that doesn't permi
 
 ### Level 2: Method `Overloads` (3 pts)
 
-_____ 1 pt: The `House` class includes at least 2 overloaded methods
+__YES___ 1 pt: The `House` class includes at least 2 overloaded methods
 
 _____ 1 pt: The `Library` class includes at least 2 overloaded methods
 
-_____ 1 pt: The `Cafe` class includes at least 2 overloaded methods
+__YES___ 1 pt: The `Cafe` class includes at least 2 overloaded methods
 
 ### Level 3: `CampusMap.java` (2 pts)
 
@@ -48,13 +48,13 @@ _____ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       _____ Classes & class members all have Javadoc header comments
 
-      _____ Clear and consistent indentation of bracketed sections
+      ___YES__ Clear and consistent indentation of bracketed sections
 
-      _____ Adheres to Java conventions on naming & capitalization
+      __YES___ Adheres to Java conventions on naming & capitalization
 
-      _____ Methods & variables all have clear and accurate names
+      __YES___ Methods & variables all have clear and accurate names
 
-      _____ Methods avoid confusing side effects
+      __YES___ Methods avoid confusing side effects
 
 _____ 1 pt: All required files included with submission (including completed `rubric.md` file)
 
