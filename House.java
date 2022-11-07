@@ -38,7 +38,7 @@ public class House extends Building {
   public void goToFloor(int floorNum) {
     // If the difference between the floorNum passed in and the floor number that the user is currently on is greater than one floor up or down, 
     // and there is no elevator in this building, then it is not possible to move up or down by more than one floor at a time.
-    if (floorNum - activeFloor > 1 || activeFloor - floorNum >1) {
+    if (floorNum - activeFloor > 1 || activeFloor - floorNum > 1) {
       if (elevator == false) {
         throw new RuntimeException("Cannot go to nonadjacent floor, there is no elevator in " + this.name);
       }
@@ -87,11 +87,13 @@ public class House extends Building {
     return residents.contains(person);
   }
 
+  /* Overridden showOptions method with additional options for House. */
   public void showOptions() {
     super.showOptions();
     System.out.println(" + moveIn()" + "\n + moveOut()" + "\n + isResident()");
   }
   
+  /* Overridden toString method that formats a House string. */
   public String toString() {
     return this.getName() + " is a " + this.getFloors() + "-story residence in the " + this.getAddress() + " area of campus.";
   }

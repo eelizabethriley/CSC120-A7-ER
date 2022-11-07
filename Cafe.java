@@ -28,13 +28,16 @@ public class Cafe extends Building {
 
     /* Overloaded constructor with name, address, and nFloors, with default inventory values. */
     public Cafe(String name, String address, int nFloors) {
-        super(name, address, nFloors);
-        this.nCoffeeOunces = 30;
-        this.nSugarPackets = 20;
-        this.nCreams = 15;
-        this.nCups = 40;
+        this(name, address, nFloors, 30, 20, 15, 40);
     }
 
+    /* Overloaded constructor with name and address. */
+    public Cafe(String name, String address) {
+        this(name, address, 1, 30, 20, 15, 40);
+    }
+
+
+    /* Go to floor method that does not allow movement from floor 1 */
     public void goToFloor(int floorNum) {
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
@@ -63,6 +66,7 @@ public class Cafe extends Building {
         System.out.println(size + " oz coffee with " + nSugarPackets + " sugar(s) and " + nCreams + " cream(s) has been sold. Thank you!");
     }
 
+    /* Overloaded sellCoffee method for black coffees. */
     public void sellCoffee(int size) {
         if (size > this.nCoffeeOunces || this.nCups == 0) {
             this.restock(size);
@@ -72,10 +76,10 @@ public class Cafe extends Building {
         System.out.println(size + "oz coffee has been sold. Thank you!");
     }
     
+    /* Overridden showOptions method with added options for Cafe. */
     public void showOptions() {
         super.showOptions();
         System.out.println(" + sellcoffee(size, nSugarPackets, nCreams)" + "\n + sellcoffee(size)");
-        
     }
 
     /**
@@ -84,14 +88,6 @@ public class Cafe extends Building {
      * @param nSugarPackets the number of sugar packets being added to the Cafe's inventory
      * @param nCreams the amount of cream being added to the Cafe's inventory
      */
-    private void restock() {
-        this.nCoffeeOunces ++;
-        this.nSugarPackets ++;
-        this.nCreams ++;
-        this.nCups ++;
-        System.out.println("Successfully restocked the Cafe.");
-    }
-
     private void restock(int size, int nSugarPackets, int nCreams) {
         this.nCoffeeOunces += size;
         this.nSugarPackets += nSugarPackets;
@@ -100,17 +96,30 @@ public class Cafe extends Building {
         System.out.println("Successfully restocked the Cafe.");
     }
 
+    /* Overloaded restock method that restocks only the ounces of coffee. */
     private void restock (int size) {
         this.nCoffeeOunces += size;
         this.nCups ++;
         System.out.println("Succesfully restocked the Cafe.");
     }
+
+    /* Default restock method that restocks each inventory item by 1. */
+    private void restock() {
+        this.nCoffeeOunces ++;
+        this.nSugarPackets ++;
+        this.nCreams ++;
+        this.nCups ++;
+        System.out.println("Successfully restocked the Cafe.");
+    }
     
     public static void main(String[] args) {
         Cafe ccCafe = new Cafe("Campus Center Cafe", "100 Elm St, Northampton, MA 01063", 1, 50, 10, 20, 20);
+        ccCafe.restock();
         ccCafe.showOptions();
         ccCafe.sellCoffee(8);
         ccCafe.sellCoffee(12, 1, 2);
+        ccCafe.enter();
+        // ccCafe.goToFloor(3);
     }
     
 }

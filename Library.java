@@ -23,12 +23,13 @@ public class Library extends Building {
       System.out.println("You have built a library: 📖");
     }
 
+    /* Overloaded constructor for a Library with name and address. */
     public Library(String name, String address) {
       this(name, address, 1);
       elevator = true;
-      System.out.println("You have built a library: 📖");
     }
-  
+
+    /* Navigation method goToFloor that allows movement to a different floor */
     public void goToFloor(int floorNum) {
       if (elevator == true) {
         super.goToFloor(floorNum);
@@ -47,13 +48,12 @@ public class Library extends Building {
       System.out.println(title + " has ben added to " + this.getName() + "'s collection.");
     }
 
-    /* Overloaded addTitle method to add 2 books t once. */
+    /* Overloaded addTitle method that adds 2 books at once. */
     public void addTitle(String title1, String title2) {
       collection.put(title1, true);
       collection.put(title2, true);
       System.out.println(title1 + " and " + title2 + " have been added to " + this.getName() + "'s collection.");
     }
-
 
     /**
      * Remove a book from the library's collection, which is a Hashtable containing titles and their availability.
@@ -64,6 +64,7 @@ public class Library extends Building {
       System.out.println(title + " has been removed from " + this.getName() + "'s collection.");
     }
 
+    /* Overloaded removeTitle method that removes 2 books at once. */
     public void removeTitle(String title1, String title2) {
       collection.remove(title1);
       collection.remove(title2);
@@ -79,6 +80,7 @@ public class Library extends Building {
       System.out.println("Successfully checked out the title " + title + " from " + this.getName() + ". Thank you!");
     }
 
+    /* Overloaded checkOut method that checks out 2 books at once. */
     public void checkOut(String title1, String title2) {
       collection.replace(title1, true, false);
       collection.replace(title2, true, false);
@@ -94,6 +96,7 @@ public class Library extends Building {
       System.out.println("Succesfully returned the title " + title + " to " + this.getName() + ". Thank you!");
     }
 
+    /* Overloaded returnBook method tha returns 2 books at once. */
     public void returnBook(String title1, String title2) {
       collection.replace(title1, false, true);
       collection.replace(title2, false, true);
@@ -130,6 +133,7 @@ public class Library extends Building {
       }
     }
 
+    /* Overridden showOptions method with additional options for Library. */
     public void showOptions() {
       super.showOptions();
       System.out.println(" + checkOut()" + "\n + returnBook()" + "\n + containsTitle()" + "\n + isAvailable()" + "\n + printCollection()");
