@@ -22,6 +22,12 @@ public class Library extends Building {
       elevator = true;
       System.out.println("You have built a library: 📖");
     }
+
+    public Library(String name, String address) {
+      this(name, address, 1);
+      elevator = true;
+      System.out.println("You have built a library: 📖");
+    }
   
     public void goToFloor(int floorNum) {
       if (elevator == true) {

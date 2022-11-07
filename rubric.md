@@ -26,7 +26,7 @@ __YES___ 1 pt: The `Cafe` class has a `goToFloor(...)` method that doesn't permi
 
 __YES___ 1 pt: The `House` class includes at least 2 overloaded methods
 
-_____ 1 pt: The `Library` class includes at least 2 overloaded methods
+___YES__ 1 pt: The `Library` class includes at least 2 overloaded methods
 
 __YES___ 1 pt: The `Cafe` class includes at least 2 overloaded methods
 

@@ -26,6 +26,15 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
 
+    /* Overloaded constructor with name, address, and nFloors, with default inventory values. */
+    public Cafe(String name, String address, int nFloors) {
+        super(name, address, nFloors);
+        this.nCoffeeOunces = 30;
+        this.nSugarPackets = 20;
+        this.nCreams = 15;
+        this.nCups = 40;
+    }
+
     public void goToFloor(int floorNum) {
         if (this.activeFloor == -1) {
             throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");

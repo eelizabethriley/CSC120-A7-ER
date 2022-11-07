@@ -99,10 +99,10 @@ public class House extends Building {
   /* Main for testing. */
   public static void main(String[] args) {
     House wilson = new House("Wilson", "Quad", 4, false);
+    wilson.showOptions();
     wilson.moveIn("Erin Riley");
     wilson.moveIn("Jenny Yang");
     System.out.println(wilson);
-    wilson.showOptions();
     wilson.enter();
     wilson.goUp();
     wilson.goToFloor(3);

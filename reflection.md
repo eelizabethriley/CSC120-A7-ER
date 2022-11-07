@@ -11,6 +11,8 @@ I gave the House class overloaded constructors including an empty one with defau
 For the Cafe class, I decided to overload the sellCoffee() method, making it so that it could be called with just the size of the coffee passed in so that a simple black coffee could be sold with no creams or sugars.
 I also overloaded the restock() method to support this version of the sellCoffee() method so that the restock() method could be called in the overloaded method as well to restock only the ounces of coffee, not the creams or sugars which are not needed for this order.
 I also added a default restock() method that simply increases the stock of each inventory item by 1.
+When working on the Campus Map I realized it would be helpful to overload the constructor so that you do not need to pass in numbers for the different
+items in the inventory, so I added a constructor with just name, address, and nFloors, giving default values for the inventory.
 
 - What worked, what didn't, what advice would you give someone taking this course in the future?
 
