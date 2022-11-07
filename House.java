@@ -8,13 +8,43 @@ public class House extends Building {
 
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
+  private boolean elevator;
 
-  /* Constructor for a House */
-  public House(String name, String address, int nFloors, boolean hasDiningRoom) {
+  /* Default constructor for a house */
+  public House() {
+    this("<Name Unknown>", "<Addresss Unknown>", 1, false, false);
+  }
+
+  /* Overloaded constructor for a House with Name, Address */
+  public House(String name, String address) {
+    this(name, address, 1, false, false);
+  }
+
+  /* Overloaded constructor for a Hosue with Name, Address, nFloors, and hasDiningRoom. */
+  public House(String name, String address, int nFloors, boolean hasDiningroom) {
+    this(name, address, nFloors, hasDiningroom, false);
+  }
+
+  /* Full constructor for a House */
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean elevator) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
+    this.elevator = elevator;
     System.out.println("You have built a house: 🏠");
+  }
+
+  /* Navigation method goToFloor that allows movement to a different floor */
+  public void goToFloor(int floorNum) {
+    // If the difference between the floorNum passed in and the floor number that the user is currently on is greater than one floor up or down, 
+    // and there is no elevator in this building, then it is not possible to move up or down by more than one flight of stairs.
+    if (floorNum - activeFloor > 1 || activeFloor - floorNum >1) {
+      if (elevator == false) {
+        throw new RuntimeException("Cannot go to nonadjacent floor, there is no elevator in " + this.name);
+      }
+    }
+    System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+    this.activeFloor = floorNum;
   }
 
   /*Accessor for hasDiningRoom value, indicates whether this house has a dining room or not. */
@@ -65,11 +95,18 @@ public class House extends Building {
 
   /* Main for testing. */
   public static void main(String[] args) {
-    House wilson = new House("Wilson", "Quad", 4,false);
+    House wilson = new House("Wilson", "Quad", 4, false);
     wilson.moveIn("Erin Riley");
     wilson.moveIn("Jenny Yang");
     System.out.println(wilson);
     wilson.showOptions();
+    wilson.enter();
+    wilson.goUp();
+    wilson.goToFloor(1);
+
+    House ziskind = new House("Ziskind", "Mountain Neighborhood", 4, true, true);
+    ziskind.enter();
+    ziskind.goToFloor(4);
 
   }
 

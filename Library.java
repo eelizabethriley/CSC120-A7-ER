@@ -23,6 +23,12 @@ public class Library extends Building {
       System.out.println("You have built a library: 📖");
     }
   
+    public void goToFloor(int floorNum) {
+      if (elevator == true) {
+        super.goToFloor(floorNum);
+      }
+    }
+
     /**
      * Add a book to the library's collection, which is a Hashtable containing titles and their availability.
      * @param title a string containing the title and author of the book being added
@@ -108,6 +114,9 @@ public class Library extends Building {
       neilson.returnBook("Pride and Prejudice by Jane Austen");
       neilson.printCollection();
       neilson.showOptions();
+      neilson.enter();
+      neilson.elevator = false;
+      neilson.goToFloor(4);
     }
   
   }

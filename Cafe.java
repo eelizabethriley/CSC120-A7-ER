@@ -26,6 +26,17 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
 
+    public void goToFloor(int floorNum) {
+        if (this.activeFloor == -1) {
+            throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+        }
+        if (floorNum != 1) {
+            throw new RuntimeException("Invalid floor number, customer access only on floor 1");
+        }
+        System.out.println("You are on floor #" + floorNum + " of " + this.name);
+        this.activeFloor = floorNum;
+    }
+
     /**
      * Reduces the stock of the items in the Cafe's inventory when a coffee is sold.
      * @param size the quantity of coffee, in ounces, of the coffee being sold
@@ -42,10 +53,20 @@ public class Cafe extends Building {
         this.nCups --;
         System.out.println(size + " oz coffee with " + nSugarPackets + " sugar(s) and " + nCreams + " cream(s) has been sold. Thank you!");
     }
+
+    public void sellCoffee(int size) {
+        if (size > this.nCoffeeOunces || this.nCups == 0) {
+            this.restock(size);
+        }
+        this.nCoffeeOunces -= size;
+        this.nCups --;
+        System.out.println(size + "oz coffee has been sold. Thank you!");
+    }
     
     public void showOptions() {
         super.showOptions();
-        System.out.println(" + sellcoffee()");
+        System.out.println(" + sellcoffee(size, nSugarPackets, nCreams)" + "\n + sellcoffee(size)");
+        
     }
 
     /**
@@ -61,11 +82,17 @@ public class Cafe extends Building {
         this.nCups ++;
         System.out.println("Successfully restocked the Cafe.");
     }
+
+    private void restock (int size) {
+        this.nCoffeeOunces += size;
+        this.nCups ++;
+    }
     
     public static void main(String[] args) {
         Cafe ccCafe = new Cafe("Campus Center Cafe", "100 Elm St, Northampton, MA 01063", 1, 50, 10, 20, 20);
-        ccCafe.sellCoffee(12, 1, 2);
         ccCafe.showOptions();
+        ccCafe.sellCoffee(8);
+        ccCafe.sellCoffee(12, 1, 2);
     }
     
 }
