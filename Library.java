@@ -41,6 +41,13 @@ public class Library extends Building {
       System.out.println(title + " has ben added to " + this.getName() + "'s collection.");
     }
 
+    /* Overloaded addTitle method to add 2 books t once. */
+    public void addTitle(String title1, String title2) {
+      collection.put(title1, true);
+      collection.put(title2, true);
+      System.out.println(title1 + " and " + title2 + " have been added to " + this.getName() + "'s collection.");
+    }
+
 
     /**
      * Remove a book from the library's collection, which is a Hashtable containing titles and their availability.
@@ -51,6 +58,11 @@ public class Library extends Building {
       System.out.println(title + " has been removed from " + this.getName() + "'s collection.");
     }
 
+    public void removeTitle(String title1, String title2) {
+      collection.remove(title1);
+      collection.remove(title2);
+      System.out.println(title1 + " and " + title2 + " have been removed from " + this.getName() + "'s collection.");
+    }
 
     /**
      * Set the availability of this book to unavailable.
@@ -61,6 +73,11 @@ public class Library extends Building {
       System.out.println("Successfully checked out the title " + title + " from " + this.getName() + ". Thank you!");
     }
 
+    public void checkOut(String title1, String title2) {
+      collection.replace(title1, true, false);
+      collection.replace(title2, true, false);
+      System.out.println("Successfully checked out the titles " + title1 + " and " + title2 + " from " + this.getName() + ". Thank you!");
+    }
 
     /**
      * Set the availability of this book to available.
@@ -69,6 +86,12 @@ public class Library extends Building {
     public void returnBook(String title) {
       collection.replace(title, false, true);
       System.out.println("Succesfully returned the title " + title + " to " + this.getName() + ". Thank you!");
+    }
+
+    public void returnBook(String title1, String title2) {
+      collection.replace(title1, false, true);
+      collection.replace(title2, false, true);
+      System.out.println("Successfully returned the titles " + title1 + " and " + title2 + " to " + this.getName() + ". Thank you!");
     }
 
     /**
@@ -108,8 +131,7 @@ public class Library extends Building {
 
     public static void main(String[] args) {
       Library neilson = new Library("Neilson", "7 Neilson Drive, Northampton MA 01063", 4);
-      neilson.addTitle("Pride and Prejudice by Jane Austen");
-      neilson.addTitle("The Bell Jar by Sylvia Plath");
+      neilson.addTitle("Pride and Prejudice by Jane Austen", "The Bell Jar by Sylvia Plath");
       neilson.checkOut("Pride and Prejudice by Jane Austen");
       neilson.removeTitle("The Bell Jar by Sylvia Plath");
       neilson.addTitle("The House on Mango Street by Sandra Cisneros");
